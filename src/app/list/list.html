@@ -9,8 +9,33 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
+    <ion-item>
+        <ion-label>Efekt</ion-label>
+        <ion-select (ngModelChange)="filterTeas($event)" [(ngModel)]="effect">
+          <ion-option value="Zahřívací">Zahřívací</ion-option>
+          <ion-option value="Povzbuzující">Povzbuzující</ion-option>
+          <ion-option value="Ochlazující">Ochlazující</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Taste</ion-label>
+        <ion-select (ngModelChange)="filterTeasbytaste($event)" [(ngModel)]="taste">
+            <ion-option value="Zemitá">Zemitá</ion-option>
+            <ion-option value="Trpká">Trpká</ion-option>
+            <ion-option value="Květinová">Květinová</ion-option>
+            <ion-option value="Sladká">Sladká</ion-option>
+            <ion-option value="Bylinná">Bylinná</ion-option>
+          </ion-select>
+        </ion-item> 
+        
+      
+            
+        
+      
   <ion-list>
-    <button ion-item *ngFor="let tea of teas" >
-      {{ tea }}
+    <button ion-item *ngFor="let tea of teas" (click)="showDetail(tea)">
+      {{ tea.name }}
+
     </button>  
+    
   </ion-list>

@@ -1,8 +1,17 @@
 import { Component } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
 
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import * as firebase from 'firebase/app';
+import 'rxjs/add/operator/map';
+
 import { AuthService } from '../core/auth.service';
+import { DataService } from '../core/data.service';
 import { UserModel } from '../core/user.model'
+import { TeaModel } from '../core/tea.model' 
+
+import { AlertController } from 'ionic-angular';
+
 
 @IonicPage()
 @Component({
@@ -13,11 +22,15 @@ export class ListPage {
 
   public userProfile: UserModel;
   public uid: string = "";
+  public effect: string = "";
+  public taste: string = "";
   public teas:TeaModel[];
 
   constructor(
     public navCtrl: NavController, 
+    public db: DataService,
     public authService: AuthService,
+    public alertCtrl: AlertController
   ) {
     
   }
@@ -27,11 +40,53 @@ export class ListPage {
       this.userProfile = user;
       this.uid = user.uid;
     });
+    this.initializeTeas();
   }
-  this.teas = [""];
+
+  initializeTeas() {
+    this.db.listAll("teas", {
+      orderByChild: "name"
+    }).subscribe(teas =>
+      {
+        this.teas = teas;
+        this.filterTeas(this.effect);
+        this.filterTeasbytaste(this.taste);
+      }
+    )
+  }
+
+  filterTeas(ev: any) {
+    this.initializeTeas();
+    if (ev && ev.trim() != '') {
+      this.teas = this.teas.filter((tea) => {
+        return tea.effects.indexOf(ev) != -1;
+  
+      })
+    }
+  }
+  filterTeasbytaste(ev: any) {
+    this.initializeTeas();
+    if (ev && ev.trim() != '') {
+      this.teas = this.teas.filter((tea) => {
+        return tea.taste.indexOf(ev) != -1;
+  
+      })
+    }
+  }
 
   logout() {
     this.authService.signOut().then(() => this.navCtrl.setRoot('AuthPage'));
   }
 
+  showDetail(tea) { 
+    let alert = this.alertCtrl.create({
+      title: tea.name,
+      subTitle: tea.effects,
+      buttons: ['Dismiss']
+    });
+
+    alert.present();
+
+  }
+  
 }
