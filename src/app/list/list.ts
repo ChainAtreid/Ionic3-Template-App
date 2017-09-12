@@ -13,7 +13,7 @@ export class ListPage {
 
   public userProfile: UserModel;
   public uid: string = "";
-  public teas: string[];
+  public teas:TeaModel[];
 
   constructor(
     public navCtrl: NavController, 
