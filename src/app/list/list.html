@@ -9,5 +9,8 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-  Hello Universe!
-</ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let tea of teas" >
+      {{ tea }}
+    </button>  
+  </ion-list>
