@@ -28,7 +28,7 @@ export class ListPage {
       this.uid = user.uid;
     });
   }
-  this.teas = [{"Zelený čaj"}]
+  this.teas = ["Zelený čaj"]
 
   logout() {
     this.authService.signOut().then(() => this.navCtrl.setRoot('AuthPage'));
