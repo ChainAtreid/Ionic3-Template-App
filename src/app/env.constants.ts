@@ -1,5 +1,5 @@
 export const Config = {
-  {
+  firebase: {
     apiKey: "AIzaSyCcKGVwIrpQXCk_zHomTyWb5GMhwv2eRns",
     authDomain: "my-new-project-778a8.firebaseapp.com",
     databaseURL: "https://my-new-project-778a8.firebaseio.com",
