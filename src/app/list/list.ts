@@ -13,7 +13,7 @@ export class ListPage {
 
   public userProfile: UserModel;
   public uid: string = "";
-  public teas: TeaMOdel[];
+  public teas: string[];
 
   constructor(
     public navCtrl: NavController, 
@@ -28,7 +28,7 @@ export class ListPage {
       this.uid = user.uid;
     });
   }
-  this.teas = ["Zelený čaj"]
+  this.teas = [""];
 
   logout() {
     this.authService.signOut().then(() => this.navCtrl.setRoot('AuthPage'));
