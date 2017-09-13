@@ -49,6 +49,7 @@ export class ListPage {
     }).subscribe(teas =>
       {
         this.teas = teas;
+        console.log("CHANGED")
         this.filterTeas(this.effect);
         this.filterTeasbytaste(this.taste);
       }
@@ -56,7 +57,6 @@ export class ListPage {
   }
 
   filterTeas(ev: any) {
-    this.initializeTeas();
     if (ev && ev.trim() != '') {
       this.teas = this.teas.filter((tea) => {
         return tea.effects.indexOf(ev) != -1;
@@ -65,7 +65,6 @@ export class ListPage {
     }
   }
   filterTeasbytaste(ev: any) {
-    this.initializeTeas();
     if (ev && ev.trim() != '') {
       this.teas = this.teas.filter((tea) => {
         return tea.taste.indexOf(ev) != -1;

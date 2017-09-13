@@ -26,16 +26,16 @@
             <ion-option value="Sladká">Sladká</ion-option>
             <ion-option value="Bylinná">Bylinná</ion-option>
           </ion-select>
-        </ion-item> 
+        </ion-item>
+
         
       
             
         
       
   <ion-list>
-    <button ion-item *ngFor="let tea of teas" >
+    <button ion-item *ngFor="let tea of teas" (click)="showDetail(tea)" tappable>
       {{ tea.name }}
-      <button ion-button item-end (click)="showDetail(tea)">Detail</button>
     </button>  
     
   </ion-list>
