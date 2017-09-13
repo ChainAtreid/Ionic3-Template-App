@@ -10,7 +10,7 @@ import { DataService } from '../core/data.service';
 import { UserModel } from '../core/user.model'
 import { TeaModel } from '../core/tea.model' 
 
-import { AlertController } from 'ionic-angular';
+import { ModalController } from 'ionic-angular';
 
 
 @IonicPage()
@@ -30,7 +30,7 @@ export class ListPage {
     public navCtrl: NavController, 
     public db: DataService,
     public authService: AuthService,
-    public alertCtrl: AlertController
+    public modalCtrl: ModalController
   ) {
     
   }
@@ -92,13 +92,8 @@ export class ListPage {
   }
 
   showDetail(tea) { 
-    let alert = this.alertCtrl.create({
-      title: tea.name,
-      subTitle: tea.taste + [' '] + tea.effects, 
-      buttons: ['Dismiss']
-    });
-
-    alert.present();
+    let showdetail = this.modalCtrl.create("detailPage", {tea: tea.$key});
+    showdetail.present();
 
   }
   

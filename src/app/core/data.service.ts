@@ -28,6 +28,6 @@ export class DataService {
   }
 
   update(table: string, id: string, changes: any) {
-    return this.db.list(table).update(id, changes);
+    return this.db.object(table + "/" + id).update(changes);
   }
 }
