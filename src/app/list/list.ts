@@ -80,7 +80,7 @@ export class ListPage {
   showDetail(tea) { 
     let alert = this.alertCtrl.create({
       title: tea.name,
-      subTitle: tea.effects,
+      message: tea.taste, 
       buttons: ['Dismiss']
     });
 
