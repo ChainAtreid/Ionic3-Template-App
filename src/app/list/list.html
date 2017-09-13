@@ -33,9 +33,9 @@
         
       
   <ion-list>
-    <button ion-item *ngFor="let tea of teas" (click)="showDetail(tea)">
+    <button ion-item *ngFor="let tea of teas" >
       {{ tea.name }}
-
+      <button ion-button item-end (click)="showDetail(tea)">Detail</button>
     </button>  
     
   </ion-list>
