@@ -56,12 +56,24 @@ export class ListPage {
     )
   }
 
+  refreshTeas() {
+    this.db.listAll("teas", {
+      orderByChild: "name"
+    }).subscribe(teas =>
+      {
+        this.teas = teas;
+      }
+    )
+  }
+
   filterTeas(ev: any) {
     if (ev && ev.trim() != '') {
       this.teas = this.teas.filter((tea) => {
         return tea.effects.indexOf(ev) != -1;
   
       })
+    } else {
+      this.refreshTeas();
     }
   }
   filterTeasbytaste(ev: any) {
@@ -70,6 +82,8 @@ export class ListPage {
         return tea.taste.indexOf(ev) != -1;
   
       })
+    } else {
+      this.refreshTeas();
     }
   }
 
@@ -80,7 +94,7 @@ export class ListPage {
   showDetail(tea) { 
     let alert = this.alertCtrl.create({
       title: tea.name,
-      message: tea.taste, 
+      subTitle: tea.taste + [' '] + tea.effects, 
       buttons: ['Dismiss']
     });
 
