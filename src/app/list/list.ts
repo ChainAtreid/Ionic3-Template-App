@@ -88,6 +88,7 @@ export class ListPage {
   }
 
   logout() {
+    console.log("aaa")
     this.authService.signOut().then(() => this.navCtrl.setRoot('AuthPage'));
   }
 
