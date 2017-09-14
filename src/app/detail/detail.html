@@ -12,7 +12,13 @@
   <p>
    <b>Účinky: </b> {{tea?.effects}}   <br>
    <b>Chuť: </b> {{tea?.taste}}   <br>
-   <b>Příprava:</b> {{tea?.prepare}}   <br>
-  <ion-checkbox [(ngModel)]="like" (ngModelChange)="toggleLike($event)"></ion-checkbox>  
-  </p>
+   <b>Příprava:</b> {{tea?.prepare}}  <br>
+   <ion-item >
+ <ion-checkbox [(ngModel)]="teaPreferences.like" (ngModelChange)="toggleLike($event)"></ion-checkbox>   
+   </ion-item>
+    <ion-item>
+    <ion-textarea placeholder="Enter a description"  [(ngModel)]="teaPreferences.note" (ngModelChange)="inputNote($event)" ></ion-textarea>
+  </ion-item> 
+</p>
+    
 </ion-content>

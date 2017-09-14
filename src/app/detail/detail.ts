@@ -27,7 +27,7 @@ export class detailPage {
   public tea: TeaModel;
   public teaId: string;
   public like: boolean;
-  public teaPreference: any;
+  public teaPreferences: any = {};
 
   constructor(
     public navCtrl: NavController, 
@@ -44,9 +44,9 @@ export class detailPage {
     this.authService.getFullProfile().subscribe((user) => {
       this.userProfile = user;
       this.uid = user.uid;
+      this.initializeTea()
     });
     this.teaId = this.navParams.get("tea");
-    this.initializeTea()
   }
 
   initializeTea() {
@@ -55,24 +55,23 @@ export class detailPage {
         this.tea = tea;
       }
     )
+    this.db.get("tea-preferences", this.uid + "/" + this.teaId).subscribe(teaPreferences =>
+      {
+        this.teaPreferences = teaPreferences;
+      }
+    )
 
   }
 
   toggleLike(like) {
-    this.db.get("tea-preferences", this.uid).flatMap((teaPreference) =>
-      {
-        let teas = [ this.teaId ];
-        console.log(teaPreference);
-        if (teaPreference && teaPreference.teas)
-          teas = teaPreference.teas.concat(this.teaId);
-        console.log(teas);
-        return this.db.update("tea-preferences", this.uid, {
-          user: this.uid,
-          teas: teas,
-        })
-      }
-    )
-
+    this.db.get("tea-preferences", this.uid + "/" + this.teaId).update({
+      "like": this.teaPreferences.like
+    })
+  }
+  inputNote(note) {
+    this.db.get("tea-preferences", this.uid + "/" + this.teaId).update({
+      "note": this.teaPreferences.note
+    })
   }
 
   close() {

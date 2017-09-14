@@ -10,7 +10,7 @@
 </ion-header>
 <ion-content>
     <ion-item>
-        <ion-label>Efekt</ion-label>
+        <ion-label><font color="white" style="font-size:20px">Efekt</font></ion-label>
         <ion-select (ngModelChange)="filterTeas($event)" [(ngModel)]="effect">
           <ion-option value="Zahřívací">Zahřívací</ion-option>
           <ion-option value="Povzbuzující">Povzbuzující</ion-option>
@@ -19,9 +19,9 @@
           
         </ion-select>
       </ion-item>
-      <ion-item>
-        <ion-label>Chuť</ion-label>
-        <ion-select (ngModelChange)="filterTeasbytaste($event)" [(ngModel)]="taste">
+      <ion-item >
+        <ion-label> <font color="white" style="font-size:20px">Chuť</font> </ion-label>
+        <ion-select (ngModelChange)="filterTeasbytaste($event)" [(ngModel)]="taste" >
             <ion-option value="Zemitá">Zemitá</ion-option>
             <ion-option value="Trpká">Trpká</ion-option>
             <ion-option value="Květinová">Květinová</ion-option>
@@ -30,6 +30,7 @@
             <ion-option value="" (click)="refreshTeas()">Vše</ion-option>
           </ion-select>
         </ion-item>
+        <br>
 
         
       
@@ -38,7 +39,7 @@
       
   <ion-list>
     <button ion-item *ngFor="let tea of teas" (click)="showDetail(tea)" tappable>
-      {{ tea.name }}
+      <font color="white" style="font-size:18px"> {{ tea.name }}</font>
     </button>  
     
   </ion-list>
