@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>{{ userProfile?.displayName?.split(" ")[0] }} ToDo</ion-title>
+    <ion-title>{{ userProfile?.displayName?.split(" ")[0] }} Čajovák</ion-title>
     <ion-buttons end>
       <button ion-button color="danger" >
         <ion-icon name="log-out"></ion-icon>
@@ -15,19 +15,19 @@
           <ion-option value="Zahřívací">Zahřívací</ion-option>
           <ion-option value="Povzbuzující">Povzbuzující</ion-option>
           <ion-option value="Ochlazující">Ochlazující</ion-option>
-          <ion-option value="" (click)="refreshTeas()">vše</ion-option>
+          <ion-option value="" (click)="refreshTeas()">Vše</ion-option>
           
         </ion-select>
       </ion-item>
       <ion-item>
-        <ion-label>Taste</ion-label>
+        <ion-label>Chuť</ion-label>
         <ion-select (ngModelChange)="filterTeasbytaste($event)" [(ngModel)]="taste">
             <ion-option value="Zemitá">Zemitá</ion-option>
             <ion-option value="Trpká">Trpká</ion-option>
             <ion-option value="Květinová">Květinová</ion-option>
             <ion-option value="Sladká">Sladká</ion-option>
             <ion-option value="Bylinná">Bylinná</ion-option>
-            <ion-option value="" (click)="refreshTeas()">vše</ion-option>
+            <ion-option value="" (click)="refreshTeas()">Vše</ion-option>
           </ion-select>
         </ion-item>
 

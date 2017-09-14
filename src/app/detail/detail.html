@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title> {{tea?.name}} </ion-title>
+    <ion-buttons end>
+      <button ion-button color="danger" (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <p>
+   <b>Účinky: </b> {{tea?.effects}}   <br>
+   <b>Chuť: </b> {{tea?.taste}}   <br>
+   <b>Příprava:</b> {{tea?.prepare}}   <br>
+  <ion-checkbox [(ngModel)]="like" (ngModelChange)="toggleLike($event)"></ion-checkbox>  
+  </p>
+</ion-content>
